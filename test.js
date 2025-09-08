@@ -1,0 +1,22 @@
+import axios from "axios";
+
+axios
+  .get("http://localhost:3000/api/v1/transcripts", {
+    params: {
+      fileId: "b27f8699-b681-41e2-a87b-c715880b7374",
+      lastOrderIndex: 0,
+      limit: 10,
+    },
+    headers: {
+      accept: "*/*",
+      Authorization:
+        "Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJTNm9GLW5WeXR1bU9wUnpXbjVxZW50Ykg0T0djS1d0aXZsUW5YdWRoSEs4In0.eyJleHAiOjE3NTY4ODc3OTgsImlhdCI6MTc1Njg4Njg5OCwianRpIjoiM2YwYWU2OGUtZmQyNi00Yzk1LWJlNGItNmEyYTI2MDgxYTIyIiwiaXNzIjoiaHR0cHM6Ly9zc28uZGV2LmFwZXJvLnZuL3JlYWxtcy9haW1lZXRpbmdub3Rlcy10cmFuc2NyaWJlLXN1bW1hcnlhaS1vcmdhbml6ZXIiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiYjdjNTc1ZTctYjY0OS00ZTczLWFjOGEtNWQ5OTRiNDkwOTkwIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYXBwbGljYXRpb24iLCJzZXNzaW9uX3N0YXRlIjoiN2VlZDk5MzktMjU2OC00NjMwLWE3YzctN2M0YTc0Y2FkNGU1IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vMTI3LjAuMC4xOjU1MDAiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwiZGVmYXVsdC1yb2xlcy1haW1lZXRpbmdub3Rlcy10cmFuc2NyaWJlLXN1bW1hcnlhaS1vcmdhbml6ZXIiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoib3BlbmlkIGFkZHJlc3MgZGV2aWNlLWlkIHBob25lIGdyb3VwLW1lbWJlcnNoaXAgZW1haWwgcHJvZmlsZSBhbmNlc3Rvci1pZCIsInNpZCI6IjdlZWQ5OTM5LTI1NjgtNDYzMC1hN2M3LTdjNGE3NGNhZDRlNSIsImFkZHJlc3MiOnt9LCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImRldmljZV9pZCI6IjUwZWRkNmM5LWM3MjYtNGEwMi1hYTBiLTJlYWUwYTdhN2U2MCIsImdyb3VwcyI6WyJndWVzdCJdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJkZXZpY2VfNTBlZGQ2YzktYzcyNi00YTAyLWFhMGItMmVhZTBhN2E3ZTYwIn0.sWMrviIWUF0wrDtV_gZSS_5wOeIWKuEOue87wP-ZmTARelrCHDSjsWi6QM9_14AFiLcBHeAqo3i_BPlCmDrVCvEVv4z1jZdPIJNDpj7G5KusrrnkWQWhFRrEtdsBlJGZQ2PiMOieuWFwG0bmxLnksXD3iiGhVjqkzE_tksvQE_9wf-WKYkxwdLfJGGD0oNtOXTUFBBVYFJyMQ9RRycXBDTix7iuyMqGLTc_9Ldx8Wbz1vw69U5MmfYIw8bpppf02gfvcA4b6ykyI_u34sU5XTNkFuMxE4kfIyLuBHvMMFwwhcsPmad2z-K9IcSQFcl01JS5HWx8R1oD3kyaJaL4TkA",
+      "x-api-bundleid": "aimeetingnotes.transcribe.summaryai.organizer",
+    },
+  })
+  .then((response) => {
+    console.log(response.data);
+  })
+  .catch((error) => {
+    console.error(error);
+  });

@@ -49,3 +49,7 @@ assets/*
 keys/*
 
 *.wav
+
+*.csv
+
+*.xlsx

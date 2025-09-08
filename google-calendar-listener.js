@@ -99,3 +99,34 @@ app.get("/setup-watch", async (req, res) => {
     res.status(500).send("Failed to set up calendar watch.");
   }
 });
+
+// Webhook endpoint to receive notifications
+app.post("/webhook", express.json(), (req, res) => {
+  // Headers from Google notification
+  const resourceState = req.headers["x-goog-resource-state"];
+  const channelId = req.headers["x-goog-channel-id"];
+  const resourceId = req.headers["x-goog-resource-id"];
+
+  console.log(
+    `Notification received: State=${resourceState}, Channel=${channelId}, Resource=${resourceId}`
+  );
+
+  if (resourceState === "sync") {
+    // Initial sync message; respond OK
+    return res.status(200).send("Sync acknowledged");
+  } else if (resourceState === "exists") {
+    // Event changed; fetch updated events here
+    // Example: Use googleapis to list recent events (implement as needed)
+    console.log("Event change detected! Fetch updates...");
+  } else if (resourceState === "not_exists") {
+    // Resource deleted
+    console.log("Resource deleted.");
+  }
+
+  res.status(200).send("Notification received");
+});
+
+// Start server
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});
