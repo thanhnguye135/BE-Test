@@ -9,6 +9,14 @@ import ffmpeg from "fluent-ffmpeg";
 
 dotenv.config();
 
+function formatTime(seconds) {
+  const hrs = Math.floor(seconds / 3600);
+  const mins = Math.floor((seconds % 3600) / 60);
+  const secs = Math.floor(seconds % 60);
+
+  return [hrs, mins, secs].map((v) => v.toString().padStart(2, "0")).join(":");
+}
+
 function decodeXml(xml) {
   return xml
     .replace(/&/g, "&")
@@ -82,16 +90,21 @@ async function fetchYoutubeTranscript(videoId, language = "en") {
 }
 
 async function main() {
-  const videoId = process.argv[2];
+  const videoURL = process.argv[2];
+  const videoId = videoURL
+    .replace("https://www.youtube.com/watch?v=", "")
+    .split("&")[0];
+
+  console.log("videoId:", videoId);
 
   console.log("Fetching transcript for video ID:", videoId);
   const rawTransctipt = await fetchYoutubeTranscript(videoId, "en");
   const transcripts = rawTransctipt.reduce((acc, transcript) => {
     return (
       acc +
-      `[${transcript.startTime.toFixed(2)} - ${transcript.endTime.toFixed(
-        2
-      )}] ${transcript.caption}\n`
+      `[${formatTime(transcript.startTime)} - ${formatTime(
+        transcript.endTime
+      )}] 0: ${transcript.caption}\n`
     );
   }, "");
 
